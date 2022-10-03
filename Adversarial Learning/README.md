@@ -1,4 +1,4 @@
-# Adverserial learning against synthetic text detection
+# Adversarial learning against synthetic text detection
 Detectors have general limitations to commonly found human errors which can be taken and added to synthetic text. With a simple layer of manipulation synthetic
 text can be mistaken for human...
 -Attacks on detectors
