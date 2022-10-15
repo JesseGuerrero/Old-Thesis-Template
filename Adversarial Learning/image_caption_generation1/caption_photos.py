@@ -1,9 +1,9 @@
-import os
-import glob
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import os
+import glob
 import math
 import os
 from os import listdir, path
