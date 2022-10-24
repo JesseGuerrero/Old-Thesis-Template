@@ -2,14 +2,14 @@ import json
 
 jsonFile = open('captions_train2017.json')
 jsonData = json.load(jsonFile)
-outData = open('../captions/humanCOCOTest10k.txt', 'w')
+outData = open('../captions/humanCOCOTestSmall.txt', 'w')
 
 captionDict = {}
 for i, caption in enumerate(jsonData['annotations']):
-    if(caption['image_id'] < 48_795):
+    if(caption['image_id'] < 10_000):
         captionDict[caption['image_id']] = []
 for i, caption in enumerate(jsonData['annotations']):
-    if(caption['image_id'] < 48_795):
+    if(caption['image_id'] < 10_000):
         captionDict[caption['image_id']].append(caption['caption'])
 # print(captionDict)
 captionkeys = []
