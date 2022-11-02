@@ -15,7 +15,7 @@ There are different types of attacks/experiments organized by keyword in the att
 
 EXPERIMENT_NAME is the name of the folder to hold the data files
 ADVERSARIAL_TYPE is the type of changes we make to each text.
-TEXT_TO_CHANGE is the number of texts to make adversarial.
+IMAGES_TO_RUN is the number of image captions to make adversarial.
 
 Adversarial Types:
 -'do-nothing': Nothing is done
@@ -23,16 +23,18 @@ Adversarial Types:
 -'random-order-replace-char': Same as replace char except the input text lines are shuffled
 -'misspelling': Replaces certain words with misspellings from misspellings.json.
 '''
-EXPERIMENT_NAME = "50_b"
-CHECK_HUMAN = False
-CHECK_BY_IMAGE = True #Produces more accuracy for out of distribution data
-ADVERSARIAL_TYPE = "replace-char"
-TEXT_TO_CHANGE = 100
-HOMOGLYPH_REPLACEMENT = [['a', 'α']]
-#DATA_FILE = './data/humanCOCOTestSmall.txt'
-DATA_FILE = './data/fakeTextSmall1.txt'
+EXPERIMENT_NAME = "CheckSynthetic"
+CHECK_HUMAN = True
+CHECK_BY_IMAGE = True
+ADVERSARIAL_TYPE = "do-nothing"
+DATA_FILE = './data/humanCOCOTestSmall.txt'
+#DATA_FILE = './data/fakeTextSmall1.txt'
 #DATA_FILE = './data/fakeTextSmall2.txt'
 #DATA_FILE = './data/xl-1542M-k40.test.jsonl'
+HOMOGLYPH_REPLACEMENT = [[' a ', ' α ']]
+IMAGES_TO_RUN = 10
+
+IMAGES_TO_RUN *= (1 if CHECK_BY_IMAGE else 5) # run 5 captions individually when not by image
 
 def run_experiment(
 	homoglyphs, 
@@ -75,7 +77,7 @@ def run_experiment(
 	if 'xl-1542M-k40' not in DATA_FILE:
 		text_list = load_caption_file(DATA_FILE, CHECK_BY_IMAGE)
 
-	_range = tqdm(range(TEXT_TO_CHANGE))#len(text_list)))
+	_range = tqdm(range(IMAGES_TO_RUN))#len(text_list)))
 	i = 0
 
 

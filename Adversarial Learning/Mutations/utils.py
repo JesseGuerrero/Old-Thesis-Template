@@ -53,7 +53,7 @@ def load_caption_file(filename, check_by_image):
 			if line.split(":")[0] not in dictionaryByImage:
 				dictionaryByImage[line.split(":")[0]] = line.split(":")[1].replace("\n", " ")
 		texts = list(dictionaryByImage.values())
-		print(dictionaryByImage)
+		# print(dictionaryByImage)
 	if not check_by_image:
 		for line in textLines:
 			texts.append(line.split(":")[1])
