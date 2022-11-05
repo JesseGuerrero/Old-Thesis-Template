@@ -28,8 +28,7 @@ class Dataset:
         self._data = self._original_data
         self._mutations = []
 
-    def saveDataMutation(self, data: dict, mutation_append: list):
-        self._data = data
+    def saveDataMutation(self, mutation_append: list):
         self._mutations.append(mutation_append)
 
     def _determineFileName(self) -> str:
