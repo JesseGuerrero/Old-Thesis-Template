@@ -32,7 +32,7 @@ def replaceWords(dataset : Dataset, word_list : dict, count=1):
         dataset[key] = captionsBuffer
 
 import requests, json
-def getSynonym(word) -> str:
+def getSynonymAPI(word) -> str:
     with open("./mutation_data/synonyms.json", "r+") as f:
         local_synonyms = json.load(f)
         if word in local_synonyms:
@@ -57,7 +57,7 @@ def getSynonym(word) -> str:
             return word
         return synonyms
 
-def getAntonym(word) -> str:
+def getAntonymAPI(word) -> str:
     with open("./mutation_data/antonyms.json", "r+") as f:
         local_antonyms = json.load(f)
         if word in local_antonyms:
@@ -96,33 +96,33 @@ def getRandomWordAPI() -> str:
 
 #From json files
 import random
-def getRandomWord() -> str:
+def getRandomWordJSON() -> str:
     with open("./mutation_data/random_word.json", "r") as file:
         words = dict(json.load(file))['word']
         words : list
         return random.choice(words)
 
-def getRandomVerb() -> str:
+def getRandomVerbJSON() -> str:
     with open("./mutation_data/random_verbs.json", "r") as file:
         verbs = dict(json.load(file))['verb']
         verbs : list
         return random.choice(verbs)
 
 
-def getRandomAdverb() -> str:
+def getRandomAdverbJSON() -> str:
     with open("./mutation_data/random_adverbs.json", "r") as file:
         adverbs = dict(json.load(file))['adverb']
         adverbs : list
         return random.choice(adverbs)
 
-def getRandomAdjective() -> str:
+def getRandomAdjectiveJSON() -> str:
     with open("./mutation_data/random_adjectivea.json", "r") as file:
         adjectives = dict(json.load(file))['adjective']
         adjectives : list
         return random.choice(adjectives)
 
 #TODO: Might be too large a set of misspellings
-def getMisspellList() -> dict:
+def getMisspellListJSON() -> dict:
     with open("./mutation_data/misspellings.json", "r") as file:
         misspellings = dict(json.load(file))
         actualMispells = {}
